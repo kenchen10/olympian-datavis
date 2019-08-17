@@ -19,10 +19,13 @@ class App extends Component {
     return;
   };
   render() {
-    let filter = ["Sport", "Swimming"];
+    let filter = [["Sport", "Swimming"], ["Sport", "Weightlifting"]];
+    for (let i = 0; i < filter.length; i++) {
+      this.toRender.push(<BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />)
+    }
     return (
       <div className="App">
-        <BarChart data={data} filter={filter} width={this.state.width} height={this.state.height} />
+        {this.toRender}
       </div>
     );
   }

@@ -8,7 +8,7 @@ class BarChart extends Component {
 
     drawChart() {
         d3.csv(this.props.data, (d) => {
-            if (d[this.props.filter[0]] === this.props.filter[1]) {
+            if (d[this.props.filter[this.props.index][0]] === this.props.filter[this.props.index][1]) {
                 return d;
             }
         }).then(data => {
@@ -24,7 +24,7 @@ class BarChart extends Component {
             const svg = d3.select("body")
                 .append("svg")
                 .attr("width", this.props.width)
-                .attr("height", this.props.height)
+                .attr("height", 100)
                 .style("margin-left", 100);
             svg.selectAll("rect")
                 .data(data)
@@ -33,7 +33,7 @@ class BarChart extends Component {
                 .attr("x", (d) => d.Age * 15)
                 .attr("y", (d) => {
                     ages[d.Age] -= 1;
-                    return maxCount * 4 - 4 * ages[d.Age];
+                    return maxCount * 4 - 4 * ages[d.Age] + 100 - (maxCount + 1) * 4;
                 })
                 .attr("width", 15)
                 .attr("height", () => 4)
