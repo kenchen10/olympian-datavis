@@ -9,6 +9,14 @@ class BarChart extends Component {
     drawChart() {
         d3.csv(this.props.data).then(data => {
             let ages = {};
+            data.forEach(d => {
+                if (d.Age in ages) {
+                    ages[d.Age] += 1;
+                } else {
+                    ages[d.Age] = 1;
+                }
+            });
+            let maxCount = d3.max(Object.keys(ages).map(d => ages[d]));
             const svg = d3.select("body")
                 .append("svg")
                 .attr("width", this.props.width)
@@ -21,12 +29,8 @@ class BarChart extends Component {
                 .append("rect")
                 .attr("x", (d) => d.Age * 15)
                 .attr("y", (d) => {
-                    if (d.Age in ages) {
-                        ages[d.Age] += 1;
-                    } else {
-                        ages[d.Age] = 1;
-                    }
-                    return this.props.height - 100 - 4 * ages[d.Age];
+                    ages[d.Age] -= 1;
+                    return maxCount * 4 - 4 * ages[d.Age];
                 })
                 .attr("width", 15)
                 .attr("height", () => 4)
