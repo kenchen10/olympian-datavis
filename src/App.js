@@ -1,19 +1,31 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './App.css'
 import BarChart from './js/BarChart'
 import data from './data/usa_rio.csv'
+import * as d3 from "d3";
 
-function App () {
-  const state = {
-    data: data,
-    width: 1000,
-    height: 600
+class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      data: data,
+      width: 1000,
+      height: 300
+    }
+    this.toRender = [];
   }
-  return (
-    <div className="App">
-      <BarChart data={data} width={state.width} height={state.height} />
-    </div>
-  );
+
+  filterByCountry = (country) => {
+    return;
+  };
+  render() {
+    let filter = ["Sport", "Swimming"];
+    return (
+      <div className="App">
+        <BarChart data={data} filter={filter} width={this.state.width} height={this.state.height} />
+      </div>
+    );
+  }
 }
 
 export default App
