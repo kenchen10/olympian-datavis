@@ -1,18 +1,19 @@
-import React from 'react';
-import './App.css';
-import BarChart from './js/BarChart';
+import React from 'react'
+import './App.css'
+import BarChart from './js/BarChart'
+import data from './data/usa_rio.csv'
 
-function App() {
-  let state = {
-    data: [12, 5, 6, 6, 9, 10],
-    width: 700,
-    height: 500
+function App () {
+  const state = {
+    data: data,
+    width: 1000,
+    height: 600
   }
   return (
     <div className="App">
-      <BarChart data={state.data} width={state.width} height={state.height} />
+      <BarChart data={data} width={state.width} height={state.height} />
     </div>
   );
 }
 
-export default App;
+export default App
