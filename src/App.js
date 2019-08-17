@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import './App.css'
 import BarChart from './js/BarChart'
-import data from './data/usa_rio.csv'
-import * as d3 from "d3";
+import data from './data/usa_rio_unique_names.csv'
 
 class App extends Component {
   constructor (props) {
@@ -26,7 +25,9 @@ class App extends Component {
       }
     ];
     for (let i = 0; i < filter[0].types.length; i++) {
-      this.toRender.push(<BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />)
+      this.toRender.push(
+        <BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />
+      )
     }
     return (
       <div className="App">
