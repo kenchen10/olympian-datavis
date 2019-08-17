@@ -27,6 +27,16 @@ class BarChart extends Component {
                 .attr("height", 100)
                 .style("margin-left", 100);
 
+            let ageKeys = Object.keys(ages)
+            for (let i = 0; i < ageKeys.length; i++) {
+                svg.append("text")
+                    .attr("x", 15 * (ageKeys[i]) + 15)
+                    .attr("y", maxCount * 4 - 4 * ages[ageKeys[i]] + 100 - (maxCount + 2.4) * 4)
+                    .text(ages[ageKeys[i]])
+                    .attr("font-size", "8px")
+                    .attr("fill", "black");
+            }
+
             svg.selectAll("rect")
                 .data(data)
                 .enter()
