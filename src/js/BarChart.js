@@ -21,7 +21,7 @@ class BarChart extends Component {
                 }
             });
             let maxCount = d3.max(Object.keys(ages).map(d => ages[d]));
-            const svg = d3.select("body")
+            const svg = d3.select(".App")
                 .append("svg")
                 .attr("width", this.props.width)
                 .attr("height", 100)
@@ -31,30 +31,36 @@ class BarChart extends Component {
                 .data(data)
                 .enter()
                 .append("rect")
-                .attr("x", (d) => d.Age * 15)
+                .attr("x", (d) => d.Age * 15 + 10)
                 .attr("y", (d) => {
                     ages[d.Age] -= 1;
-                    return maxCount * 4 - 4 * ages[d.Age] + 100 - (maxCount + 2) * 4;
+                    return maxCount * 4 - 4 * ages[d.Age] + 100 - (maxCount + 3) * 4;
                 })
                 .attr("width", 15)
                 .attr("height", () => 4)
                 .attr("fill", "black")
                 .attr("stroke", "white");
             svg.append("line")
-                .attr("x1", 0)
-                .attr("y1", 96)
-                .attr("x2", 15 * 4 * 40)
-                .attr("y2", 96)
+                .attr("x1", 10)
+                .attr("y1", 92)
+                .attr("x2", 15 * 5 * 13 + 10)
+                .attr("y2", 92)
                 .attr("stroke-width", 1)
-                .attr("stroke", "#E8EAF6");
+                .attr("stroke", "#C5CAE9");
             for (let i = 0; i < 14; i++) {
                 svg.append("line")
-                    .attr("x1", 15 * i * 5)
-                    .attr("y1", 96)
-                    .attr("x2", 15 * i * 5)
-                    .attr("y2", 20)
+                    .attr("x1", 15 * i * 5 + 10)
+                    .attr("y1", 92)
+                    .attr("x2", 15 * i * 5 + 10)
+                    .attr("y2", 82)
                     .attr("stroke-width", 1)
-                    .attr("stroke", "#E8EAF6");
+                    .attr("stroke", "#C5CAE9");
+                svg.append("text")
+                    .attr("x", 15 * i * 5 - 5 + 12)
+                    .attr("y", 100)
+                    .text(i * 5)
+                    .attr("font-size", "8px")
+                    .attr("fill", "black");
             }
         });
     }
