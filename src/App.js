@@ -19,8 +19,13 @@ class App extends Component {
     return;
   };
   render() {
-    let filter = [["Sport", "Swimming"], ["Sport", "Weightlifting"]];
-    for (let i = 0; i < filter.length; i++) {
+    let filter = [
+      {
+        category: "Sport",
+        types: ['Archery', 'Athletics', 'Badminton', 'Basketball', 'Beach Volleyball', 'Boxing', 'Canoeing', 'Cycling', 'Diving', 'Equestrianism', 'Fencing', 'Football', 'Golf', 'Gymnastics', 'Hockey', 'Judo', 'Modern Pentathlon', 'Rhythmic Gymnastics', 'Rowing', 'Rugby Sevens', 'Sailing', 'Shooting', 'Swimming', 'Synchronized Swimming', 'Table Tennis', 'Taekwondo', 'Tennis', 'Trampolining', 'Triathlon', 'Volleyball', 'Water Polo', 'Weightlifting', 'Wrestling']
+      }
+    ];
+    for (let i = 0; i < filter[0].types.length; i++) {
       this.toRender.push(<BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />)
     }
     return (

@@ -8,7 +8,7 @@ class BarChart extends Component {
 
     drawChart() {
         d3.csv(this.props.data, (d) => {
-            if (d[this.props.filter[this.props.index][0]] === this.props.filter[this.props.index][1]) {
+            if (d[this.props.filter[0].category] === this.props.filter[0].types[this.props.index]) {
                 return d;
             }
         }).then(data => {
