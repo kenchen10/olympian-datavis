@@ -75,12 +75,21 @@ class BarChart extends Component {
                 tooltip.html(`
                     ${d.Name.bold()} 
                     </br> 
-                    Age: ${d.Age}
+                    - Sex: ${d.Sex}
+                    </br> 
+                    - Age: ${Math.round(d.Age)}
                     </br>
-                    Height: ${d.Height}
+                    - Height: ${d.Height} cm
+                    </br>
+                    - Weight: ${d.Weight} kg
+                    </br>
+                    - Team: ${d.Team}
+                    </br>
+                    - Games: ${d.Games}
                 `)
                     .style("font-size", "12px")
                     .style("background-color", "#FBE9E7")
+                    .style("text-align", "left")
                     .style("padding-top", "10px")
                     .style("padding-bottom", "10px")
                     .style("padding-left", "5px")
@@ -112,7 +121,7 @@ class BarChart extends Component {
                 .append("svg")
                 .attr("width", this.props.width)
                 .attr("height", this.props.height)
-                .style("margin-left", 100);
+                .style("margin-top", 0);
 
             let ageKeys = Object.keys(ages)
             // write text for how tall each bar is
