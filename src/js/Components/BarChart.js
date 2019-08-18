@@ -86,6 +86,14 @@ class BarChart extends Component {
                     - Team: ${d.Team}
                     </br>
                     - Games: ${d.Games}
+                    </br>
+                    - Year: ${d.Year}
+                    </br>
+                    - City: ${d.City}
+                    </br>
+                    - Event: ${d.Event}
+                    </br>
+                    - Medal: ${d.Medal}
                 `)
                     .style("font-size", "12px")
                     .style("background-color", "#FBE9E7")
@@ -96,6 +104,8 @@ class BarChart extends Component {
                     .style("padding-right", "5px")
                     .style("border-radius", "3px")
                     .style("transform", "translate(-50%, -100%)")
+                    .style("overflow-wrap", "break")
+                    .style("max-width", "150px")
                     .style("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
             });
     }
