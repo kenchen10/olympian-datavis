@@ -85,11 +85,7 @@ class BarChart extends Component {
                     </br>
                     - Team: ${d.Team}
                     </br>
-                    - Games: ${d.Games}
-                    </br>
-                    - Year: ${d.Year}
-                    </br>
-                    - City: ${d.City}
+                    - Games: ${d.Games.slice(2,-2)} ${d.City}
                     </br>
                     - Event: ${d.Event}
                     </br>
