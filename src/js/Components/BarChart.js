@@ -5,6 +5,7 @@ class BarChart extends Component {
     constructor(props) {
         super(props);
         this.barWidth = 15;
+        this.barHeight = 5;
     }
     componentDidMount() {
         this.drawChart();
@@ -14,23 +15,23 @@ class BarChart extends Component {
         // x-axis
         svg.append("line")
             .attr("x1", 10)
-            .attr("y1", 92)
+            .attr("y1", this.props.height - 10)
             .attr("x2", this.barWidth * 5 * 13 + 10)
-            .attr("y2", 92)
+            .attr("y2", this.props.height - 10)
             .attr("stroke-width", 1)
             .attr("stroke", "#C5CAE9");
         // x-axis tick marks
         for (let i = 0; i < 14; i++) {
             svg.append("line")
                 .attr("x1", this.barWidth * i * 5 + 10)
-                .attr("y1", 92)
+                .attr("y1", this.props.height - 10)
                 .attr("x2", this.barWidth * i * 5 + 10)
-                .attr("y2", 82)
+                .attr("y2", this.props.height - 20)
                 .attr("stroke-width", 1)
                 .attr("stroke", "#C5CAE9");
             svg.append("text")
                 .attr("x", this.barWidth * i * 5 - 5 + 12)
-                .attr("y", 100)
+                .attr("y", this.props.height)
                 .text(i * 5)
                 .attr("font-size", "8px")
                 .attr("fill", "black");
@@ -39,7 +40,7 @@ class BarChart extends Component {
 
     renderBarSlice(svg, data, counts, maxCount) {
         var tooltip = d3.select(".App")
-            .append("div")
+            .append("text")
                 .style("opacity", 0)
                 .style("position", "absolute")
                 .style("user-select", "none")
@@ -52,24 +53,26 @@ class BarChart extends Component {
             .attr("x", (d) => d.Age * this.barWidth + 10)
             .attr("y", (d) => {
                 counts[d.Age] -= 1;
-                return maxCount * 4 - 4 * counts[d.Age] + 100 - (maxCount + 3) * 4;
+                return maxCount * this.barHeight - this.barHeight * counts[d.Age] + this.props.height - (maxCount + 3) * this.barHeight;
             })
             .attr("width", this.barWidth)
-            .attr("height", () => 4)
+            .attr("height", () => this.barHeight)
             .attr("fill", "black")
             .attr("stroke", "white")
-            .on("mouseover", function(d, i) {
-                console.log(d3.event.pageX, d3.event.pageY);
-                tooltip.transition().style("opacity", 0.9).text(d.Age).style("z-index", "10");
-                d3.select(this).transition().attr("fill", "green");
+            .on("mouseover", function(d) {
+                tooltip.style("opacity", 0.9);
+                tooltip.style("z-index", "10");
+                d3.select(this).style("fill", "green");
             })
-            .on("mouseout", function(d, i) {
-                tooltip.transition().style("opacity", 0).style("z-index", "-10");
-                d3.select(this).transition().attr("fill", "black");
+            .on("mouseout", function() {
+                tooltip.style("opacity", 0);
+                tooltip.style("z-index", "-10");
+                d3.select(this).transition().style("fill", "black");
             })
-            .on("mousemove", function(d, i) {
+            .on("mousemove", function(d) {
                 tooltip.style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY) + "px")
+                .style("top", (d3.event.pageY - 40) + "px");
+                tooltip.text(d.Name + "</br>" + d.Age);
             });
     }
 
@@ -94,7 +97,7 @@ class BarChart extends Component {
             const svg = d3.select(".App")
                 .append("svg")
                 .attr("width", this.props.width)
-                .attr("height", 100)
+                .attr("height", this.props.height)
                 .style("margin-left", 100);
 
             let ageKeys = Object.keys(ages)
@@ -102,7 +105,7 @@ class BarChart extends Component {
             for (let i = 0; i < ageKeys.length; i++) {
                 svg.append("text")
                     .attr("x", this.barWidth * (ageKeys[i]) + this.barWidth)
-                    .attr("y", maxCount * 4 - 4 * ages[ageKeys[i]] + 100 - (maxCount + 2.4) * 4)
+                    .attr("y", maxCount * this.barHeight - this.barHeight * ages[ageKeys[i]] + this.props.height - (maxCount + 2.4) * this.barHeight)
                     .text(ages[ageKeys[i]])
                     .attr("font-size", "8px")
                     .attr("fill", "black");

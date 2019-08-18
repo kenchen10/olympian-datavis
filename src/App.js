@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       data: data,
       width: 1000,
-      height: 300
+      height: 23 * 5
     }
     this.toRender = [];
   }
