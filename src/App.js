@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './App.css'
-import BarChart from './js/BarChart'
+import BarChart from './js/Components/BarChart'
 import data from './data/usa_rio_unique_names.csv'
 
 class App extends Component {
