@@ -4,7 +4,7 @@ import BarChart from './js/BarChart'
 import data from './data/usa_rio_unique_names.csv'
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       data: data,
