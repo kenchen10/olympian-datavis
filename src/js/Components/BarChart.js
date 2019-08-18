@@ -60,19 +60,33 @@ class BarChart extends Component {
             .attr("fill", "black")
             .attr("stroke", "white")
             .on("mouseover", function(d) {
-                tooltip.style("opacity", 0.9);
+                tooltip.transition().style("opacity", 1);
                 tooltip.style("z-index", "10");
-                d3.select(this).style("fill", "green");
+                d3.select(this).transition().style("fill", "green");
             })
             .on("mouseout", function() {
-                tooltip.style("opacity", 0);
+                tooltip.transition().style("opacity", 0);
                 tooltip.style("z-index", "-10");
                 d3.select(this).transition().style("fill", "black");
             })
             .on("mousemove", function(d) {
-                tooltip.style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 40) + "px");
-                tooltip.text(d.Name + "</br>" + d.Age);
+                tooltip.style("left", (d3.event.pageX + 2) + "px")
+                    .style("top", (d3.event.pageY - 2) + "px");
+                tooltip.html(`
+                    ${d.Name.bold()} 
+                    </br> 
+                    Age: ${d.Age}
+                    </br>
+                    Height: ${d.Height}
+                `)
+                    .style("font-size", "12px")
+                    .style("background-color", "#FBE9E7")
+                    .style("padding-top", "10px")
+                    .style("padding-bottom", "10px")
+                    .style("padding-left", "5px")
+                    .style("padding-right", "5px")
+                    .style("border-radius", "3px")
+                    .style("transform", "translate(-50%, -100%)");
             });
     }
 
