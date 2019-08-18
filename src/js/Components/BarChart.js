@@ -126,6 +126,15 @@ class BarChart extends Component {
             }
             this.renderBarSlice(svg, data, ages, maxCount);
             this.renderXAxis(svg);
+            data.forEach(d => {
+                svg.append("text")
+                    .text(d.Sport)
+                    .attr("font-weight", "bold")
+                    .attr("x", 0)
+                    .attr("y", 90)
+                    .attr("font-size", "20px")
+                    .attr("fill", "black");
+            })
         });
     }
     render(){

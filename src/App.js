@@ -26,7 +26,7 @@ class App extends Component {
     ];
     for (let i = 0; i < filter[0].types.length; i++) {
       this.toRender.push(
-        <BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />
+          <BarChart key={i} data={data} filter={filter} width={this.state.width} height={this.state.height} index={i} />
       )
     }
     return (
