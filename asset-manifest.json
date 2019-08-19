@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/olympian-datavis/static/css/main.b4a078fe.chunk.css",
+    "main.js": "/olympian-datavis/static/js/main.e9fe9598.chunk.js",
+    "main.js.map": "/olympian-datavis/static/js/main.e9fe9598.chunk.js.map",
+    "runtime~main.js": "/olympian-datavis/static/js/runtime~main.d851e030.js",
+    "runtime~main.js.map": "/olympian-datavis/static/js/runtime~main.d851e030.js.map",
+    "static/js/2.7f298c37.chunk.js": "/olympian-datavis/static/js/2.7f298c37.chunk.js",
+    "static/js/2.7f298c37.chunk.js.map": "/olympian-datavis/static/js/2.7f298c37.chunk.js.map",
+    "index.html": "/olympian-datavis/index.html",
+    "precache-manifest.364fe2d2ddc708214a9c96eb6ab07c79.js": "/olympian-datavis/precache-manifest.364fe2d2ddc708214a9c96eb6ab07c79.js",
+    "service-worker.js": "/olympian-datavis/service-worker.js",
+    "static/css/main.b4a078fe.chunk.css.map": "/olympian-datavis/static/css/main.b4a078fe.chunk.css.map",
+    "static/media/usa_rio_unique_names.csv": "/olympian-datavis/static/media/usa_rio_unique_names.3960a5b6.csv"
+  }
+}
