@@ -31,7 +31,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <div className="title">Olympian Data Visualization</div>
+        <div className="title">Olympian Data Visualization (Age)</div>
         {this.toRender}
       </div>
     );
