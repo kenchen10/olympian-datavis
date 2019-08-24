@@ -18,3 +18,8 @@ code {
   margin-bottom: 20px;
   font-size: 30px;
 }
+
+.description {
+  max-width: 70%;
+  margin: auto;
+}

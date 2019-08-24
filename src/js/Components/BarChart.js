@@ -41,6 +41,7 @@ class BarChart extends Component {
     renderBarSlice(svg, data, counts, maxCount) {
         var tooltip = d3.select(".App")
             .append("text")
+                .attr("class", "tooltip")
                 .style("opacity", 0)
                 .style("position", "absolute")
                 .style("user-select", "none")
@@ -70,6 +71,8 @@ class BarChart extends Component {
                 d3.select(this).transition().style("fill", "black");
             })
             .on("mousemove", function(d) {
+                // const box = document.querySelector('.tooltip').node();
+                // console.log(box);
                 tooltip.style("left", (d3.event.pageX + 2) + "px")
                     .style("top", (d3.event.pageY - 2) + "px");
                 tooltip.html(`
