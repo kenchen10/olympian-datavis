@@ -61,22 +61,13 @@ class BarChart extends Component {
             .attr("fill", "black")
             .attr("stroke", "white")
             .on("mouseover", function(d) {
+                d.EventMedal = d.EventMedal.replace(new RegExp("Gold", 'g'), `<img class="medal" src=${require("../../imgs/gold.png")} />`)
+                d.EventMedal = d.EventMedal.replace(new RegExp("Silver", 'g'), `<img class="medal" src=${require("../../imgs/silver.png")} />`)
+                d.EventMedal = d.EventMedal.replace(new RegExp("Bronze", 'g'), `<img class="medal" src=${require("../../imgs/bronze.png")} />`)
+                d.EventMedal = d.EventMedal.replace(new RegExp("Did Not Place", 'g'), `${"No Medal".bold()}`)
                 tooltip.transition().style("opacity", 1);
                 tooltip.style("z-index", "10");
                 d3.select(this).transition().style("stroke", "#EF5350");
-                let set = false;
-                d.EventMedal = d.EventMedal.replace("Gold", `<img class="medal" src=${require("../../imgs/gold.png")} />`)
-                d.EventMedal = d.EventMedal.replace("Silver", `<img class="medal" src=${require("../../imgs/silver.png")} />`)
-                d.EventMedal = d.EventMedal.replace("Bronze", `<img class="medal" src=${require("../../imgs/bronze.png")} />`)
-                if (d.EventMedal.split("")[2] === ":" && !set) {
-                    d.EventMedal = d.Sport + d.EventMedal;
-                    set = true;
-                } else {
-                    d.EventMedal = d.EventMedal.replace(d.Sport, '');
-                    set = true;
-                }
-                let gender = d.Sex === "Male" ? "Men's" : "Women's";
-                d.EventMedal = d.EventMedal.replace(gender, '');
             })
             .on("mouseout", function() {
                 tooltip.transition().style("opacity", 0);
