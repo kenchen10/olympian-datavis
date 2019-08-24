@@ -64,6 +64,19 @@ class BarChart extends Component {
                 tooltip.transition().style("opacity", 1);
                 tooltip.style("z-index", "10");
                 d3.select(this).transition().style("stroke", "#EF5350");
+                let set = false;
+                d.EventMedal = d.EventMedal.replace("Gold", `<img class="medal" src=${require("../../imgs/gold.png")} />`)
+                d.EventMedal = d.EventMedal.replace("Silver", `<img class="medal" src=${require("../../imgs/silver.png")} />`)
+                d.EventMedal = d.EventMedal.replace("Bronze", `<img class="medal" src=${require("../../imgs/bronze.png")} />`)
+                if (d.EventMedal.split("")[2] === ":" && !set) {
+                    d.EventMedal = d.Sport + d.EventMedal;
+                    set = true;
+                } else {
+                    d.EventMedal = d.EventMedal.replace(d.Sport, '');
+                    set = true;
+                }
+                let gender = d.Sex === "Male" ? "Men's" : "Women's";
+                d.EventMedal = d.EventMedal.replace(gender, '');
             })
             .on("mouseout", function() {
                 tooltip.transition().style("opacity", 0);
@@ -71,12 +84,6 @@ class BarChart extends Component {
                 d3.select(this).transition().style("stroke", "white");
             })
             .on("mousemove", function(d) {
-                d.EventMedal = d.EventMedal.replace("Gold", `<img class="medal" src=${require("../../imgs/gold.png")} />`)
-                d.EventMedal = d.EventMedal.replace("Silver", `<img class="medal" src=${require("../../imgs/silver.png")} />`)
-                d.EventMedal = d.EventMedal.replace("Bronze", `<img class="medal" src=${require("../../imgs/bronze.png")} />`)
-                d.EventMedal = d.EventMedal.replace(d.Sport, '');
-                let gender = d.Sex === "Male" ? "Men's" : "Women's";
-                d.EventMedal = d.EventMedal.replace(gender, '');
                 tooltip.style("left", (d3.event.pageX + 2) + "px")
                     .style("top", (d3.event.pageY - 10) + "px");
                 tooltip.html(`
