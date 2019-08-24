@@ -63,49 +63,40 @@ class BarChart extends Component {
             .on("mouseover", function(d) {
                 tooltip.transition().style("opacity", 1);
                 tooltip.style("z-index", "10");
-                d3.select(this).transition().style("fill", "green");
+                d3.select(this).transition().style("stroke", "#EF5350");
             })
             .on("mouseout", function() {
                 tooltip.transition().style("opacity", 0);
                 tooltip.style("z-index", "-10");
-                d3.select(this).transition().style("fill", "black");
+                d3.select(this).transition().style("stroke", "white");
             })
             .on("mousemove", function(d) {
-                // const box = document.querySelector('.tooltip').node();
-                // console.log(box);
+                d.EventMedal = d.EventMedal.replace("Gold", `<img class="medal" src=${require("../../imgs/gold.png")} />`)
+                d.EventMedal = d.EventMedal.replace("Silver", `<img class="medal" src=${require("../../imgs/silver.png")} />`)
+                d.EventMedal = d.EventMedal.replace("Bronze", `<img class="medal" src=${require("../../imgs/bronze.png")} />`)
+                d.EventMedal = d.EventMedal.replace(d.Sport, '');
+                let gender = d.Sex === "Male" ? "Men's" : "Women's";
+                d.EventMedal = d.EventMedal.replace(gender, '');
                 tooltip.style("left", (d3.event.pageX + 2) + "px")
-                    .style("top", (d3.event.pageY - 2) + "px");
+                    .style("top", (d3.event.pageY - 10) + "px");
                 tooltip.html(`
                     ${d.Name.bold()} 
                     </br> 
-                    - Sex: ${d.Sex}
+                    - ${"Sex".bold()}: ${d.Sex}
                     </br> 
-                    - Age: ${Math.round(d.Age)}
+                    - ${"Age".bold()}: ${Math.round(d.Age)}
                     </br>
-                    - Height: ${d.Height} cm
+                    - ${"Height".bold()}: ${d.Height} cm
                     </br>
-                    - Weight: ${d.Weight} kg
+                    - ${"Weight".bold()}: ${d.Weight} kg
                     </br>
-                    - Team: ${d.Team}
+                    - ${"Team".bold()}: ${d.Team}
                     </br>
-                    - Games: ${d.Games.slice(2,-2)} ${d.City}
+                    - ${"Games".bold()}: ${d.Games} ${d.City}
                     </br>
-                    - Event: ${d.Event}
-                    </br>
-                    - Medal: ${d.Medal}
+                    - ${"Event".bold()}: ${d.EventMedal}
                 `)
-                    .style("font-size", "12px")
-                    .style("background-color", "#FBE9E7")
-                    .style("text-align", "left")
-                    .style("padding-top", "10px")
-                    .style("padding-bottom", "10px")
-                    .style("padding-left", "5px")
-                    .style("padding-right", "5px")
-                    .style("border-radius", "3px")
-                    .style("transform", "translate(-50%, -100%)")
-                    .style("overflow-wrap", "break")
-                    .style("max-width", "150px")
-                    .style("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+                    .style("transform", "translate(-50%, -100%)");
             });
     }
 
@@ -145,6 +136,7 @@ class BarChart extends Component {
             }
             this.renderBarSlice(svg, data, ages, maxCount);
             this.renderXAxis(svg);
+            // add text for sport name
             data.forEach(d => {
                 svg.append("text")
                     .text(d.Sport)
@@ -152,7 +144,8 @@ class BarChart extends Component {
                     .attr("x", 0)
                     .attr("y", 90)
                     .attr("font-size", "20px")
-                    .attr("fill", "black");
+                    .attr("fill", "black")
+                    .attr("font-family", "Helvetica Neue,Helvetica,Arial,sans-serif");
             })
         });
     }
