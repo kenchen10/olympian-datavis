@@ -143,7 +143,7 @@ class BarChart extends Component {
                     .attr("y", 90)
                     .attr("font-size", "20px")
                     .attr("fill", "black")
-                    .attr("font-family", "Helvetica Neue,Helvetica,Arial,sans-serif");
+                    .attr("font-family", "Fontin");
             })
         });
     }

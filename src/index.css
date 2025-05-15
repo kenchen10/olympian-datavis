@@ -1,19 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+
 }
 
 .title {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -22,17 +17,15 @@ code {
 
 .description {
   padding-top: 20px;
-  max-width: 70%;
+  max-width: 50%;
   margin: auto;
   text-align: justify;
   color: #666;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
   letter-spacing: .4px;
   line-height: 1.7;
 }
 
 .tooltip {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
   font-size: 12px;
   background-color: #FBE9E7;
   text-align: left;
@@ -48,4 +41,14 @@ code {
 
 .medal {
   max-width: 10%;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Fontin';
+  font-size: 15px
 }

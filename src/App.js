@@ -33,7 +33,7 @@ class App extends Component {
       <div className="App">
         <div className="title">Olympian Data Visualization</div>
         <div className="description">
-          This is a visualization of Olympian Age Data of United States Olympians in Rio 2016 across sports. Naturally, different sports 
+          This is a visualization of Age Data of United States Olympians in Rio 2016 across sports. Naturally, different sports 
           have different age ranges. It is interesting to see these differences and analyze the possible reasons for them. Below we have graphs of 
           age data for each Olympic sport.
         </div>
